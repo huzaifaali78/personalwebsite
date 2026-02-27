@@ -159,6 +159,23 @@ if (themeToggle) {
   });
 }
 
+// Small interactive logo tilt on hover
+const logo = document.getElementById("logo");
+if (logo) {
+  logo.addEventListener("mousemove", (e) => {
+    const rect = logo.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rotateX = (-y / rect.height) * 8;
+    const rotateY = (x / rect.width) * 8;
+    logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  logo.addEventListener("mouseleave", () => {
+    logo.style.transform = "rotateX(0deg) rotateY(0deg)";
+  });
+}
+
 // Scroll-to-top button behavior
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
